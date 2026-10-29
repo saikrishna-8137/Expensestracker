@@ -1,0 +1,47 @@
+/* Compact, professional styling for login, contact and password-reset pages. */
+:root { --auth-ink: #f4f7ff; --auth-muted: #9aa8c2; --auth-line: rgba(160,180,220,.18); --auth-cyan: #62e6e2; }
+.top-navbar { max-width: 1120px; margin: 0 auto; padding: 18px 24px; }
+.nav-logo { font-family: Outfit, sans-serif; font-weight: 700; letter-spacing: -.3px; }
+.nav-links { gap: 8px; }
+.nav-links a { padding: 9px 13px; border-radius: 10px; text-decoration: none; }
+.nav-links a:hover, .nav-links a.active { background: rgba(98,230,226,.09); }
+.container { max-width: 1080px; padding: 20px 22px 54px; }
+.site-header { margin: 28px auto 24px; max-width: 520px; text-align: center; }
+.site-header .brand-icon { margin: 0 auto 14px; }
+.site-header h1 { margin: 8px 0; font-family: Outfit, sans-serif; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; letter-spacing: -1.2px; }
+.site-header .subtitle { margin: 8px auto 0; max-width: 340px; color: var(--auth-muted); font-size: .98rem; line-height: 1.5; }
+.auth-card { width: min(100%, 420px); margin: 0 auto 44px; padding: 26px; border: 1px solid var(--auth-line); border-radius: 22px; background: rgba(12,19,37,.86); box-shadow: 0 22px 70px rgba(0,0,0,.24); }
+.auth-card h2, .reset-card h1 { margin: 20px 0 5px; font-family: Outfit, sans-serif; font-size: 1.65rem; line-height: 1.2; letter-spacing: -.5px; }
+.form-intro { margin: 0 0 20px; color: var(--auth-muted); font-size: .9rem; line-height: 1.5; }
+.auth-card label, .reset-card label { display: block; margin: 14px 0 7px; color: #dce5f7; font-size: .86rem; font-weight: 600; }
+.auth-card input, .reset-card input { box-sizing: border-box; width: 100%; min-width: 0; padding: 12px 13px; border: 1px solid var(--auth-line); border-radius: 11px; outline: none; color: var(--auth-ink); background: rgba(4,10,23,.7); font: inherit; font-size: .92rem; }
+.auth-card input:focus, .reset-card input:focus { border-color: var(--auth-cyan); box-shadow: 0 0 0 3px rgba(98,230,226,.1); }
+.password-wrap { display: flex; align-items: center; gap: 8px; }
+.password-wrap input { flex: 1; }
+.password-toggle { flex: 0 0 auto; border: 0; color: var(--auth-cyan); background: transparent; cursor: pointer; font: inherit; font-size: .82rem; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 5px; border-radius: 12px; background: rgba(0,0,0,.2); }
+.tabs button { padding: 10px 8px; border: 0; border-radius: 9px; color: var(--auth-muted); background: transparent; cursor: pointer; font: inherit; font-size: .88rem; }
+.tabs button.active { color: var(--auth-ink); background: rgba(98,230,226,.12); }
+.full-button { width: 100%; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px; padding: 12px 16px; border-radius: 11px; font-weight: 700; }
+.forgot-row { display: flex; justify-content: flex-end; margin-top: 12px; }
+.forgot-row a, .back-home { color: var(--auth-cyan); font-size: .85rem; text-decoration: none; }
+.forgot-row a:hover, .back-home:hover { text-decoration: underline; }
+.privacy-note { margin: 18px 0 0; color: var(--auth-muted); font-size: .78rem; text-align: center; }
+.message { font-size: .87rem; line-height: 1.5; overflow-wrap: anywhere; }
+.contact-main, .reset-main { min-height: 70vh; display: grid; place-items: center; padding: 32px 20px 58px; }
+.contact-card, .reset-card { box-sizing: border-box; width: min(100%, 500px); padding: clamp(24px, 5vw, 38px); border: 1px solid var(--auth-line); border-radius: 24px; background: rgba(12,19,37,.88); box-shadow: 0 22px 70px rgba(0,0,0,.25); }
+.contact-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 22px; border: 1px solid var(--auth-line); border-radius: 15px; color: var(--auth-cyan); background: rgba(98,230,226,.08); font-size: 1.3rem; }
+.contact-card h1 { margin: 8px 0; font-family: Outfit, sans-serif; font-size: clamp(2rem, 6vw, 2.7rem); line-height: 1.1; letter-spacing: -1px; }
+.contact-copy { margin: 10px 0 24px; color: var(--auth-muted); font-size: .94rem; line-height: 1.55; }
+.contact-link { display: flex; align-items: center; gap: 13px; margin-top: 11px; padding: 15px; border: 1px solid var(--auth-line); border-radius: 14px; color: var(--auth-ink); background: rgba(255,255,255,.025); text-decoration: none; }
+.contact-link:hover { border-color: rgba(98,230,226,.5); background: rgba(98,230,226,.06); }
+.contact-link-icon { display: grid; place-items: center; flex: 0 0 38px; width: 38px; height: 38px; border-radius: 11px; color: var(--auth-cyan); background: rgba(98,230,226,.1); }
+.contact-link span:nth-child(2) { min-width: 0; display: grid; gap: 4px; }
+.contact-link small { color: var(--auth-muted); font-size: .75rem; }
+.contact-link strong { overflow-wrap: anywhere; font-size: .88rem; font-weight: 600; }
+.contact-arrow { margin-left: auto; color: var(--auth-muted); }
+.back-home { display: inline-block; margin-top: 24px; }
+.reset-card .brand-icon { margin-bottom: 18px; }
+.reset-card h1 { margin-top: 8px; }
+.reset-card form { margin-top: 22px; }
+@media (max-width: 560px) { .top-navbar { padding: 14px 16px; } .nav-logo { font-size: .9rem; } .nav-links a { padding: 8px 9px; font-size: .86rem; } .container { padding: 12px 14px 36px; } .auth-card { padding: 21px; } .site-header { margin-top: 24px; } }

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Expense Tracker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth-polish.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <!-- Compact navigation -->
+  <nav class="top-navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><span class="nav-symbol">₹</span> Family Expense Tracker</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <main class="container" id="home">
+    <!-- Compact brand header -->
+    <header class="site-header">
+      <div class="brand-icon">₹</div>
+      <p class="eyebrow">PERSONAL FINANCE</p>
+      <h1>Spend smarter<span class="accent">.</span></h1>
+      <p class="subtitle">One simple place to track your expenses.</p>
+    </header>
+
+    <!-- LOGIN AND REGISTRATION -->
+    <section id="auth-section" class="card auth-card">
+      <div class="tabs">
+        <button type="button" id="show-login" class="active">Login</button>
+        <button type="button" id="show-register">Create account</button>
+      </div>
+
+      <form id="login-form">
+        <h2>Welcome back<span class="accent">.</span></h2>
+        <p class="form-intro">Sign in to manage your expenses.</p>
+
+        <label for="login-email">Email address</label>
+        <input id="login-email" type="email" autocomplete="email"
+               placeholder="you@example.com" required>
+
+        <label for="login-password">Password</label>
+        <div class="password-wrap">
+          <input id="login-password" type="password"
+                 autocomplete="current-password"
+                 placeholder="Enter your password" required>
+          <button type="button" class="password-toggle"
+                  data-password-target="login-password"
+                  aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
+
+        <div class="forgot-row">
+          <a href="reset-password.html" id="forgot-password-link">Forgot password?</a>
+        </div>
+
+        <button class="primary-button full-button" type="submit">
+          Sign in <span>→</span>
+        </button>
+      </form>
+
+      <form id="register-form" hidden>
+        <h2>Create your account<span class="accent">.</span></h2>
+        <p class="form-intro">Your personal spending space starts here.</p>
+
+        <label for="register-email">Email address</label>
+        <input id="register-email" type="email" autocomplete="email"
+               placeholder="you@example.com" required>
+
+        <label for="register-password">Password</label>
+        <div class="password-wrap">
+          <input id="register-password" type="password"
+                 minlength="6" autocomplete="new-password"
+                 placeholder="At least 6 characters" required>
+          <button type="button" class="password-toggle"
+                  data-password-target="register-password"
+                  aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
+
+        <button class="primary-button full-button" type="submit">
+          Create account <span>→</span>
+        </button>
+      </form>
+
+      <p id="auth-message" class="message" role="status"></p>
+      <p class="privacy-note">
+        🔒 Your expenses are private to your account.
+      </p>
+    </section>
+
+    <!-- EXPENSE DASHBOARD -->
+    <section id="dashboard" hidden>
+      <div class="dashboard-top card">
+        <div>
+          <p class="eyebrow">YOUR FINANCIAL OVERVIEW</p>
+          <h2>Dashboard<span class="accent">.</span></h2>
+          <p id="user-email" class="muted"></p>
+        </div>
+        <button type="button" id="logout-button"
+                class="secondary-button">Log out ↗</button>
+      </div>
+
+      <p id="app-message" class="message" role="status"></p>
+
+      <!-- SUMMARY CARDS -->
+      <div class="summary-grid">
+        <article class="summary-card summary-total">
+          <div class="summary-top">
+            <span>Total spent</span><span class="summary-icon">₹</span>
+          </div>
+          <p id="total-expenses" class="summary-value">₹0</p>
+          <p class="summary-caption">Across all active expenses</p>
+        </article>
+
+        <article class="summary-card">
+          <div class="summary-top">
+            <span>This week</span><span class="summary-icon">↗</span>
+          </div>
+          <p id="weekly-expenses" class="summary-value">₹0</p>
+          <p id="weekly-caption" class="summary-caption">Monday – Sunday</p>
+        </article>
+
+        <article class="summary-card">
+          <div class="summary-top">
+            <span>This month</span><span class="summary-icon">▦</span>
+          </div>
+          <p id="monthly-expenses" class="summary-value">₹0</p>
+          <p id="monthly-caption" class="summary-caption">Current month</p>
+        </article>
+
+        <article class="summary-card">
+          <div class="summary-top">
+            <span>Recorded entries</span><span class="summary-icon">#</span>
+          </div>
+          <p id="expense-count" class="summary-value">0</p>
+          <p class="summary-caption">Active expense records</p>
+        </article>
+      </div>
+
+      <!-- ADD EXPENSE -->
+      <section class="card section-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">RECORD A PAYMENT</p>
+            <h2 id="expense-form-title">Add an expense</h2>
+          </div>
+          <span class="section-mark">＋</span>
+        </div>
+
+        <form id="expense-form">
+          <label for="expense-item">What did you spend on?</label>
+          <input id="expense-item" type="text" maxlength="120"
+                 placeholder="e.g. Weekly groceries" required>
+
+          <div class="form-grid">
+            <div>
+              <label for="expense-amount">Amount (₹)</label>
+              <input id="expense-amount" type="number" min="0.01"
+                     max="9999999999.99" step="0.01"
+                     placeholder="0.00" required>
+            </div>
+
+            <div>
+              <label for="expense-category">Category</label>
+              <select id="expense-category" required>
+                <option value="Food">🍲 Food</option>
+                <option value="Groceries">🛒 Groceries</option>
+                <option value="Transport">🚗 Transport</option>
+                <option value="Bills">💡 Bills</option>
+                <option value="Shopping">🛍️ Shopping</option>
+                <option value="Health">🏥 Health</option>
+                <option value="Education">📚 Education</option>
+                <option value="Entertainment">🎬 Entertainment</option>
+                <option value="Other">📦 Other</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="expense-date">Date of expense</label>
+          <input id="expense-date" type="date" required>
+
+          <label for="expense-notes">
+            Notes <span class="optional">(optional)</span>
+          </label>
+          <textarea id="expense-notes" rows="3" maxlength="500"
+                    placeholder="Any extra details..."></textarea>
+
+          <div class="form-actions">
+            <button type="submit" id="save-expense-button"
+                    class="primary-button">Save expense →</button>
+            <button type="button" id="cancel-edit-button"
+                    class="secondary-button" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- EXPENSE HISTORY -->
+      <section class="card section-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR SPENDING TIMELINE</p>
+            <h2>Weekly expense tables</h2>
+          </div>
+          <button type="button" id="refresh-button"
+                  class="secondary-button">↻ Refresh</button>
+        </div>
+
+        <div class="filter-row">
+          <div>
+            <label for="filter-category">Filter by category</label>
+            <select id="filter-category">
+              <option value="All">All categories</option>
+              <option value="Food">Food</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Transport">Transport</option>
+              <option value="Bills">Bills</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <p id="history-caption" class="muted"></p>
+        </div>
+
+        <div id="expense-list" class="weekly-groups">
+          <p class="muted">Your expenses will appear here.</p>
+        </div>
+      </section>
+
+      <!-- EXPENSE ARCHIVE -->
+      <section class="archive-panel">
+        <div class="archive-heading">
+          <div>
+            <p class="eyebrow">YOUR OLDER RECORDS</p>
+            <h2>Expense Archive</h2>
+            <p class="muted">
+              Keep older expenses without cluttering your current history.
+            </p>
+          </div>
+
+          <button id="archive-old-button" type="button">
+            Archive expenses older than 8 months
+          </button>
+        </div>
+
+        <p id="archive-message" class="muted" aria-live="polite"></p>
+
+        <div class="archive-summary">
+          <span>Archived records</span>
+          <strong id="archived-count">0</strong>
+        </div>
+
+        <div id="archive-list">
+          <p class="muted">Your archived expenses will appear here.</p>
+        </div>
+      </section>
+
+      <footer class="footer-note">
+        Made for better family finances <span>✦</span>
+      </footer>
+    </section>
+
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="script.js"></script>
+  <script src="auth-reset.js"></script>
+</body>
+</html>
