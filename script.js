@@ -157,13 +157,16 @@ registerForm.addEventListener("submit", async (event) => {
   showAuthMessage("Creating your account...");
 
   try {
-    const { data, error } = await supabaseClient.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: window.location.origin + window.location.pathname
-      }
-    });
+    
+const { data, error } = await supabaseClient.auth.signUp({
+  email,
+  password,
+  options: {
+    emailRedirectTo:
+      "https://expensestracker.saikrishnacheruvugattu08.workers.dev/"
+  }
+});
+
 
     if (error) {
       showAuthMessage(error.message, true);
