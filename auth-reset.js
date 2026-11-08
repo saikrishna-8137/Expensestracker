@@ -30,26 +30,31 @@
   }
 
   // Show/hide password buttons.
-  document
-    .querySelectorAll("[data-password-target]")
-    .forEach((button) => {
-      button.addEventListener("click", () => {
-        const input = document.getElementById(
-          button.dataset.passwordTarget
-        );
+ 
+document
+  .querySelectorAll("[data-password-target]")
+  .forEach((button) => {
+    button.addEventListener("click", () => {
+      const input = document.getElementById(
+        button.dataset.passwordTarget
+      );
 
-        if (!input) return;
+      if (!input) return;
 
-        const show = input.type === "password";
-        input.type = show ? "text" : "password";
-        button.textContent = show ? "Hide" : "Show";
-        button.setAttribute(
-          "aria-label",
-          show ? "Hide password" : "Show password"
-        );
-        button.setAttribute("aria-pressed", String(show));
-      });
+      const show = input.type === "password";
+
+      input.type = show ? "text" : "password";
+
+      button.textContent = show ? "Hide" : "Show";
+
+      button.setAttribute(
+        "aria-label",
+        show ? "Hide password" : "Show password"
+      );
+
+      button.setAttribute("aria-pressed", String(show));
     });
+  });
 
   // Send password-reset email from the login page.
   const forgotLink = document.getElementById(
@@ -89,8 +94,8 @@
 
       try {
         
-            const redirectTo = "http://127.0.0.1:5500/reset-password.html";
-
+            const redirectTo =
+  "https://expensestracker.saikrishnacheruvugattu08.workers.dev/reset-password.html";
 
         const { error } =
           await client.auth.resetPasswordForEmail(email, {
